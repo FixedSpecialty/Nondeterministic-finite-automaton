@@ -16,12 +16,19 @@ public class NFA implements NFAInterface{
 		// The alphabet of this DFA
 		Set<Character> alphabet;
 
+		Set<Character> transitions;
+		
 		// Set of all the final states of this DFA.
 		Set<NFAState> finalStates;
 
 		NFAState initial;
 
-
+		public NFA() {
+			states = new HashSet<NFAState>();
+			alphabet = new HashSet<>();
+			transitions = new HashSet<>();
+			finalStates = new HashSet<NFAState>();
+		}
 		//think this works? need to test but logic seems correct...
 	public void addTransition(String fromState, char onSymb, String toState) {
 		NFAState from = new NFAState(fromState);
