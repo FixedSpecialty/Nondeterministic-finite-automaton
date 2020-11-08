@@ -1,6 +1,8 @@
 package fa.nfa;
 
 import java.util.HashSet;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.Set;
 
 import fa.State;
@@ -18,11 +20,13 @@ public class NFA implements NFAInterface{
 		Set<NFAState> finalStates;
 
 
-		//NEED TO WORK ON ADDING TRANSITIONS SINCE WE NEED TO CONVERT NFA STATE TO STRING
+		//think this works? need to test but logic seems correct...
 	public void addTransition(String fromState, char onSymb, String toState) {
+		NFAState from = new NFAState(fromState);
+		NFAState to = new NFAState(toState);
 		for (NFAState s : states) {
 			if (fromState.equals(s.getName())) {
-				s.addTransition(onSymb, toState);
+				s.addTransition(onSymb, to);
 			}
 		}
 		for(Character c : alphabet){			
@@ -112,8 +116,9 @@ public class NFA implements NFAInterface{
 	@Override
 	//THIS IS THE BIG BOI. BIG ALGORITHM, MUCH CODE
 	public DFA getDFA() {
-		// TODO Auto-generated method stub
-		return null;
+		DFA dfa = new DFA();
+		PriorityQueue<Set<NFAState>> dfaQueue = new PriorityQueue<Set<NFAState>>();
+		return dfa;
 	}
 
 }
