@@ -46,15 +46,16 @@ public class NFA implements NFAInterface{
 		
 	}
 
-	public void addStartState(String name) {
+	public void addStartState(String nextToken) {
+		NFAState newState = new NFAState(nextToken);
 		for (NFAState s : states) {
-			if (s.getName().equals(name)) {
+			if (s.getName().equals(nextToken)) {
 				initial = s;
 				s.setInit(true);				
 				return;
 			}
 		}
-		NFAState newState = new NFAState(name);
+		
 		newState.setInit(true);
 		states.add(newState);
 		
@@ -62,6 +63,15 @@ public class NFA implements NFAInterface{
 
 	public void addFinalState(String nextToken) {
 		NFAState newState = new NFAState(nextToken);
+		for(NFAState s : states)
+		{
+			if(s.getName().equals(nextToken))
+			{
+				s.setFinal(true);
+				return;
+				
+			}
+		}
 		newState.setFinal(true);
 		finalStates.add(newState);
 		states.add(newState);
