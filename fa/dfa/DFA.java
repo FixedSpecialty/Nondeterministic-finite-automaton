@@ -1,8 +1,6 @@
 package fa.dfa;
-
 import java.util.LinkedHashSet;
 import java.util.Set;
-
 /**
  * Implementation of DFA class to be used
  * in p1p2

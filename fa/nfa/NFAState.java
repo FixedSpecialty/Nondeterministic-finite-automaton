@@ -34,6 +34,9 @@ public class NFAState extends State{
 	public boolean isInit() {
 		return init;
 	}
+	public boolean isFinal() {
+		return finalState;
+	}
 
 	public void addTransition(char onSymb, NFAState toState) {
 		if(transitions.get(onSymb)!=null)
