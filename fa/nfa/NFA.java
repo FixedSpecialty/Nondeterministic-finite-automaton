@@ -20,20 +20,21 @@ public class NFA implements NFAInterface{
 		// The alphabet of this DFA
 		Set<Character> alphabet;
 
+		Set<Character> transitions;
+		
 		// Set of all the final states of this DFA.
 		Set<NFAState> finalStates;
 
 		//can only be one intial state
 		NFAState initial;
 
-		//constructor for NFA
-	public NFA(){
-		states = new HashSet<>();
-		alphabet = new HashSet<>();
-		finalStates = new HashSet<>();
-	}
-
-	//instead of like the DFA, we link existing states rather than creating new ones
+		public NFA() {
+			states = new HashSet<NFAState>();
+			alphabet = new HashSet<>();
+			transitions = new HashSet<>();
+			finalStates = new HashSet<NFAState>();
+		}
+		//think this works? need to test but logic seems correct...
 	public void addTransition(String fromState, char onSymb, String toState) {
 		for (NFAState s : states) { //iterate through states
 			if (fromState.equals(s.getName())) { //if equal...
